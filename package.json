@@ -4,9 +4,10 @@
   "description": "Projet N°6 parcours dev app js -- Openclassrooms -- 2021-12-06",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "serve": "sass --watch scss/main.scss:css/style.css", 
-    "start": "sass scss/main.scss:css/style.css"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "sass --watch scss/main.scss:css/style.css",
+    "start": "sass scss/main.scss:css/style.css",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/antoineThomasCode/antoinethomas_6_06122021/issues"
   },
-  "homepage": "https://github.com/antoineThomasCode/antoinethomas_6_06122021#readme"
+  "homepage": "https://github.com/antoineThomasCode/antoinethomas_6_06122021#readme",
+  "devDependencies": {
+    "eslint": "^8.5.0"
+  }
 }

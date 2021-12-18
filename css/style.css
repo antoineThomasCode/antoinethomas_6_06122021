@@ -80,6 +80,122 @@ h1 {
   box-shadow: 10px 12px 55px 5px rgba(131, 131, 133, 0.377);
 }
 
+#contact_modal {
+  z-index: 999;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e5e583;
+}
+#contact_modal > .modal-content {
+  background-color: #DB8876;
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
+  margin: 20vh auto;
+  border-radius: 5px;
+  padding: 20px;
+}
+#contact_modal > .modal-content > div {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#contact_modal > .modal-content > div h2 {
+  font-size: 2em;
+}
+#contact_modal > .modal-content > div img {
+  height: 20px;
+  cursor: pointer;
+}
+#contact_modal > .modal-content form {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+#contact_modal > .modal-content form label {
+  padding-bottom: 7px;
+  color: #312E2E;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+#contact_modal > .modal-content form > div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+#contact_modal > .modal-content form > div input {
+  display: flex;
+  flex-basis: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+}
+#contact_modal > .modal-content form > div #message {
+  height: 100px;
+}
+
+/*.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none; 
+    border-radius: 5px;
+}
+*/
 @keyframes puff-in-center {
   0% {
     -webkit-transform: scale(0.5);
@@ -282,60 +398,6 @@ body {
 #mediaContainer article div span i {
   margin-left: 3px;
   font-size: 0.7em;
-}
-
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312E2E;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
