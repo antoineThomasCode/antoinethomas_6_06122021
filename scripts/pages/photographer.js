@@ -50,7 +50,6 @@ async function displayLikes(medias) {
     medias.forEach((media) => {
       if (media.photographerId == photographerId){
         userLikesCounter += media.likes; 
-        return userLikesCounter;
       }
     userLikes.textContent = userLikesCounter;
     const heartIcon = document.createElement('i');
@@ -58,7 +57,8 @@ async function displayLikes(medias) {
     heartIcon.classList.add('fa-heart') 
     userLikes.appendChild(heartIcon)
     stickyUserInfos.appendChild(userLikes);
-    return userLikesCounter;
+    const formTitle = document.getElementById('formTitle')
+    formTitle.innerHTML = `Contactez-moi ${photographerInfos.name}`
   })
     }
 // call functions to display doata in page 

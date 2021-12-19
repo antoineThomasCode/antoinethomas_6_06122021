@@ -9,15 +9,16 @@
     width: 100vw;
     height: 100vh;
     background-color: #e5e5e583;
-    > .modal-content {
+    > #modal-content {
         background-color: #DB8876;
         display: flex;
         flex-wrap: wrap;
-        width: 20%;
+        flex-basis: 25%; 
         margin: 20vh auto;
         border-radius: 5px;
         padding: 20px; 
-        > div {
+        justify-content: center;
+        > div > div {
             flex-basis: 100%;
             display: flex;
             justify-content: space-between;
@@ -59,6 +60,24 @@
             }
         }
     }
+}
+.error--bg {
+    border: 2px solid red !important;
+  }
+  
+.error {
+    content: attr(data-error);
+    font-size: 0.8em;
+    color: red;
+    font-weight: 500;
+} 
+#message-sending {
+    font-size: 1.4em;
+    color: white;
+    width: 500px;
+    text-align: center;
+    padding: 30px 0;
+    font-weight: 400;
 }
 /*.modal {
     border-radius: 5px;

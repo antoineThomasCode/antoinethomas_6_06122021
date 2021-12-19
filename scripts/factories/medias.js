@@ -16,12 +16,15 @@ function mediaFactory(data) {
         const h3 = document.createElement('h3'); 
         const likesPerItem = document.createElement('span'); 
         const likeIcon = document.createElement('i')
+        let isLiked = false; 
+
 
 
         // setting title
         h3.textContent = title; 
         // setting likes
         likesPerItem.textContent = likes; 
+        likesPerItem.style.cursor = "pointer"
         likesPerItem.appendChild(likeIcon)
         likeIcon.classList.add('fas')
         likeIcon.classList.add('fa-heart') 
@@ -50,12 +53,20 @@ function mediaFactory(data) {
             article.appendChild(video);
             article.style.order = '2';
         }
-
+        infosItemsContainer.addEventListener('click', function(){
+            if (!isLiked) {
+                isLiked = true; 
+                likesPerItem.textContent = likes + 1;
+                likesPerItem.appendChild(likeIcon)
+                console.log(isLiked)
+            }
+        })
         //insert items in sectoon container 
         article.appendChild(infosItemsContainer)
         infosItemsContainer.appendChild(h3)
         infosItemsContainer.appendChild(likesPerItem)
         section.appendChild(article)
+        
         return (section);
 
     }

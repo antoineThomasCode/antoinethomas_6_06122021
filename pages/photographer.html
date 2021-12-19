@@ -17,67 +17,66 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div id="contact_modal">
-        <div class="modal-content">
-          <div>
-            <h2>Contactez-moi</h2>
-            <img src="../assets/icons/close.svg" onclick="closeModal()" />
+        <div id="modal-content">
+          <div id="formData">
+            <div>
+              <h2 id="formTitle">Contactez-moi</h2>
+              <img src="../assets/icons/close.svg" onclick="closeModal()" />
+            </div>
+            <form
+            name="contact_form"
+            action="#"
+            method="get"
+            onsubmit="return validate();"
+            >
+              <div>
+                <label>Prénom</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                />
+              </div>
+              <div>
+                <label>Nom</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                />
+              </div>
+              <div>
+                <label>E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                />
+              </div>
+              <div>
+                <label>Message</label>
+                <input
+                  type="text"
+                  id="message"
+                  name="message"
+                />
+              </div>
+              <input
+                      class="contact_button"
+                      type="submit"
+                      class="button"
+                      value="Envoyer"
+                    />
+            </form>
           </div>
-          <form
-          name="reserve"
-          action="index.html"
-          method="get"
-          onsubmit="return validate();"
-          >
-            <div>
-              <label>Prénom</label><br>
-              <input
-                class="text-control"
-                type="text"
-                id="firstName"
-                name="firstName"
-              />
-            </div>
-            <div>
-              <label>Nom</label><br>
-              <input
-                class="text-control"
-                type="text"
-                id="lastName"
-                name="lastName"
-              />
-            </div>
-            <div>
-              <label>E-mail</label><br>
-              <input
-                class="text-control"
-                type="email"
-                id="email"
-                name="email"
-              />
-            </div>
-            <div>
-              <label>Message</label><br>
-              <input
-                class="text-control"
-                type="text"
-                id="message"
-                name="message"
-              />
-            </div>
-            <input
-                    class="contact_button"
-                    type="submit"
-                    class="button"
-                    value="Envoyer"
-                  />
-          </form>
         </div>
       </div>
     </main>
-    
+    <script src="../scripts/utils/functions.js"></script>
     <script src="../scripts/pages/photographer.js"></script>
     <script src="../scripts/factories/medias.js"></script>
     <script src="../scripts/factories/photographer.js"></script>
     <script src="../scripts/utils/contactForm.js"></script>
+   
   </body>
 </html>
