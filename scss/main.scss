@@ -1,16 +1,22 @@
 @import "./base/reset";
 @import "./base/tools";
+
 @import "./abstracts/functions";
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
+
 @import "./base/typography";
 @import "./base/base";
+
 @import "./components/buttons";
 @import "./components/form";
 @import "./components/animations";
 @import "./components/modal";
+@import "./components/lightbox";
+
 @import "./layout/flex";
 @import "./layout/footer";
 @import "./layout/header";
+
 @import "./pages/home";
 @import "./pages/photographers";

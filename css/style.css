@@ -255,6 +255,59 @@ form input {
   display: none;
 }
 
+#lightbox {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#lightbox img, #lightbox video {
+  position: relative;
+  flex-basis: auto;
+  margin-top: 50px;
+  height: 70vh;
+  object-fit: cover;
+  box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+  justify-content: start;
+}
+#lightbox div {
+  display: flex;
+  flex-basis: 80%;
+  justify-content: space-between;
+}
+#lightbox div h2 {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  font-size: 2.2em;
+  color: #901C1C;
+}
+#lightbox div h2 span {
+  font-size: 1.2em;
+}
+#lightbox div h2 span i {
+  font-size: 0.8em;
+}
+#lightbox button {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 70px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+#lightbox button i {
+  font-size: 3em;
+  color: #901C1C;
+}
+
 header {
   padding-top: 20px;
   flex-direction: row;
@@ -392,6 +445,7 @@ body {
   animation: slide-top 1s ease-out 2.5s both;
 }
 #mediaContainer article img {
+  cursor: pointer;
   width: 370px;
   height: 370px;
   object-fit: cover;
