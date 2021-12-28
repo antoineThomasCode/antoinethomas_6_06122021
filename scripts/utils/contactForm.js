@@ -33,6 +33,7 @@ function validate(){
         displayErrorMessage(lastName, 'Veuillez entrer 2 caractères ou plus pour le nom.')
     }
     if(!emailIsCorrect(email.value)){
+        isErrors = true
         console.log('ok3')
         displayErrorMessage(email, 'Veuillez entrer une adresse mail valide.')
     }

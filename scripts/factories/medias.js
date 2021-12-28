@@ -8,94 +8,111 @@ function mediaFactory(data) {
     const mediaPathVideo = `../assets/images/${photographerInfos.name}/${video}`
     let path = ""
     let mediaInfosLightbox = document.createElement('div');
+    const article = document.createElement('article');
    
+
+    // *** tools to display medias in photographers' portfolio *** //
+    function createImage() {
+        //setting image
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", mediaPathImg);
+        img.setAttribute("alt", `${title} `);
+        path = mediaPathImg
+
+        // insert items in articles
+        article.appendChild(img)
+        img.addEventListener('click', createLightbox)
+        srcForGallery.push(mediaPathImg)
+    }
+    function createVideo() {
+        // create video  and setting path 
+        const video = document.createElement('video');
+        video.setAttribute("src", mediaPathVideo);
+        video.setAttribute("alt", `${title}`);
+        video.setAttribute("type", "video/mp4");
+        //video.setAttribute("autoplay", "autoplay")
+        //video.setAttribute("preload", "auto")
+        //video.setAttribute("controls", "")
+        video.setAttribute("loop", "")
+        video.setAttribute("muted", "")
+        video.addEventListener('click', createLightbox)
+
+        path = mediaPathVideo
+        srcForGallery.push(mediaPathVideo)
+
+        // insert video in article 
+        article.appendChild(video) 
+      
+    }
     function getMediaItems() {
         // select portfolio items container 
         const section = document.getElementById('mediaContainer');
+
         // create and setting items 
         // container for image, like and title 
-        const article = document.createElement('article');
+ 
+
         const infosItemsContainer = document.createElement('div');
         const h3 = document.createElement('h3'); 
         const likesPerItem = document.createElement('span'); 
         const likeIcon = document.createElement('i')
         let isLiked = false; 
        
-
-
-
         // setting title
         h3.textContent = title; 
-        // setting likes
+        
         likesPerItem.textContent = likes; 
         likesPerItem.style.cursor = "pointer"
         likesPerItem.appendChild(likeIcon)
         likeIcon.classList.add('fas')
         likeIcon.classList.add('fa-heart') 
-       
+        titlesForGallery.push(title)
         // create image or video 
         if (image) {
             // create image and setting path
-            const img = document.createElement( 'img' );
-            img.setAttribute("src", mediaPathImg);
-            img.setAttribute("alt", `${title} `);
-            // insert items in articles
-            article.appendChild(img)
-            article.style.order = '1';
-            path = mediaPathImg
-            article.addEventListener('click', createLightbox)
-        } else {
-            // create video  and setting path 
-            const video = document.createElement('video');
-            video.setAttribute("src", mediaPathVideo);
-            video.setAttribute("alt", `${title}`);
-            video.setAttribute("type", "video/mp4");
-            video.setAttribute("autoplay", "autoplay")
-            video.setAttribute("preload", "auto")
-            //video.setAttribute("controls", "")
-            video.setAttribute("loop", "")
-            video.setAttribute("muted", "")
+           createImage();
 
-            path = mediaPathVideo
-            // insert video in article 
-            article.appendChild(video);
-            article.style.order = '2';
-            path = mediaPathVideo
-            article.addEventListener('click', function(e){
-                e.preventDefault;
-                createLightbox();
-            })
+        } else {
+            createVideo();
         }
-  
-        infosItemsContainer.addEventListener('click', function(){
+        infosItemsContainer.addEventListener('click', function(e){
             if (!isLiked) {
                 isLiked = true; 
                 likesPerItem.textContent = likes + 1;
                 likesPerItem.appendChild(likeIcon)
-                console.log(isLiked)
             }
         })
         //insert items in section container 
-        article.appendChild(infosItemsContainer)
-        infosItemsContainer.appendChild(h3)
-        infosItemsContainer.appendChild(likesPerItem)
-        section.appendChild(article)
-        
-        console.log(path)
-        return (section);
 
+        article.append(infosItemsContainer)
+        infosItemsContainer.append(h3, likesPerItem)
+        section.appendChild(article)
     }
+    // ** tools to display media in the lightbox //
+
+    // Lightbox creation //
     function createLightbox() {
+
         const header = document.getElementById('main')
-        const lightbox = document.createElement('div')
         let mediaToDisplay; 
         let infosMedia = document.createElement('div')
-        infosMedia.innerHTML = `<h2> ${title}<span>${likes} <i class="fas fa-heart"></i> </h2>`
+        const h2 = document.createElement("h2")
+        h2.id = 'lightbox-title'
+        h2.textContent = title
+        infosMedia.appendChild(h2)
         const btnClose = document.createElement('button')
         btnClose.innerHTML = '<i class="fas fa-times"></i>'
+        const btnPrev = document.createElement('i')
+        btnPrev.classList.add('fas', 'fa-chevron-left')
+        btnPrev.id = 'btn-prev'
+
+        // create Next Button in the lightbox
+        const btnNext = document.createElement('i')
+        btnNext.id = 'btn-next'
+        btnNext.classList.add('fas', 'fa-chevron-right')
+        // create image --> OR vidéo
         if (image) {
             mediaToDisplay = document.createElement('img')
-            
         } else {
             mediaToDisplay = document.createElement('video')
             mediaToDisplay.setAttribute("alt", `${title}`);
@@ -105,20 +122,57 @@ function mediaFactory(data) {
             mediaToDisplay.setAttribute("controls", "")
             mediaToDisplay.setAttribute("loop", "")
         }
+        mediaToDisplay.id = "mediaDisplayed"
         mediaToDisplay.setAttribute('src', path)
+
+        // Display media in lightbox
+        const lightbox = document.createElement('div')
         lightbox.id = 'lightbox'
         header.append(lightbox)
         lightbox.appendChild(mediaToDisplay) 
         lightbox.appendChild(infosMedia)
-        btnClose.addEventListener('click', function(e){
-            e.preventDefault
-            header.removeChild(lightbox)
-        })
-        lightbox.appendChild(btnClose)
 
-        console.log(mediaInfosLightbox)
+        btnClose.addEventListener('click', function(){
+            header.removeChild(lightbox)
+            })
+        btnNext.addEventListener('click', function(){
+            
+            let regex = /\.jpg/i;
+    
+            let index = titlesForGallery.indexOf(h2.innerHTML)
+            let src
+            if (index === (titlesForGallery.length - 1)) {
+                index = 0
+            } else {
+                 index++
+            }
+            h2.textContent = titlesForGallery[index]
+            if(regex.test(srcForGallery[index])) {
+                console.log(index)
+                mediaToDisplay = document.getElementById("mediaDisplayed")
+                //let mediaToDisplay = document.createElement("video")
+                mediaToDisplay.outerHTML = `<img src="${srcForGallery[index]}" alt="${titlesForGallery[index]}"></img>`
+            } else {
+                lightbox.removeChild(mediaToDisplay)
+                //let mediaToDisplay = document.createElement("video")
+                lightbox.appendChild(mediaToDisplay)
+                mediaToDisplay.outerHTML = `<video src="${srcForGallery[index]}"
+                 alt="${titlesForGallery[index]}"
+                  type ="video/mp4"
+                   autoplay="" controls=""> </video>`
+               
+            }
+
+            
+        })    
+        lightbox.append(btnClose ,btnPrev, btnNext)
+        
+    }
+    // Gallery Array for the Lighbtox // 
+    function btnNextEvent () {
+        
     }
 
     
-    return { getMediaItems, createLightbox }
+    return { getMediaItems, createLightbox}
 }

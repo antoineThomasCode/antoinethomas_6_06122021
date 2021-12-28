@@ -26,8 +26,7 @@
         
         h2 {
             display: flex;
-            flex-basis: 100%;
-            justify-content: space-between; 
+            margin: 0 auto;
             font-size: 2.2em;
             color: $primary-color;
             span {
@@ -50,5 +49,17 @@
             font-size: 3em;
             color: $primary-color;
         }
+    }
+    #btn-prev, #btn-next {
+        cursor: pointer;
+        position: fixed;
+        color: $primary-color;
+        font-size: 3.5em;
+    }
+    #btn-prev {
+        left: 100px;
+    }
+    #btn-next {
+        right: 100px;
     }
 }

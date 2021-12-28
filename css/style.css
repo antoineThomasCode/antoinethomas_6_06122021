@@ -284,8 +284,7 @@ form input {
 }
 #lightbox div h2 {
   display: flex;
-  flex-basis: 100%;
-  justify-content: space-between;
+  margin: 0 auto;
   font-size: 2.2em;
   color: #901C1C;
 }
@@ -306,6 +305,18 @@ form input {
 #lightbox button i {
   font-size: 3em;
   color: #901C1C;
+}
+#lightbox #btn-prev, #lightbox #btn-next {
+  cursor: pointer;
+  position: fixed;
+  color: #901C1C;
+  font-size: 3.5em;
+}
+#lightbox #btn-prev {
+  left: 100px;
+}
+#lightbox #btn-next {
+  right: 100px;
 }
 
 header {
@@ -436,27 +447,22 @@ body {
 #mediaContainer {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 50px;
   margin-bottom: 100px;
-  row-gap: 60px;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 100px;
+  column-gap: 50px;
 }
 #mediaContainer article {
   animation: slide-top 1s ease-out 2.5s both;
+  flex-basis: 30%;
 }
-#mediaContainer article img {
+#mediaContainer article img, #mediaContainer article video {
   cursor: pointer;
-  width: 370px;
-  height: 370px;
+  width: 100%;
+  height: 400px;
   object-fit: cover;
   object-position: top center;
-  border-radius: 5px;
-  box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
-}
-#mediaContainer article video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
   border-radius: 5px;
   box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
 }

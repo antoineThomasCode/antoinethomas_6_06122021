@@ -2,6 +2,11 @@
 let params = new URL(document.location).searchParams
 const photographerId = params.get('id')
 let userLikesCounter = 0; 
+
+
+const srcForGallery = []
+const titlesForGallery = []
+
 // connect to json file 
 async function getPhotographerInfos() {
   try {
@@ -35,13 +40,17 @@ async function displayDataUser(medias) {
     const section = document.createElement( 'section' );
     section.id = 'mediaContainer';
     portfolioMain.appendChild(section)
+
+    
     medias.forEach((media) => {
         if (media.photographerId == photographerId){
           const section = document.getElementById('mediaContainer');
           let mediaModel = mediaFactory(media);
           const userDataDOM = mediaModel.getMediaItems();
         }
+
     });
+   
 }
 async function displayLikes(medias) {
 
@@ -60,10 +69,13 @@ async function displayLikes(medias) {
     const formTitle = document.getElementById('formTitle')
     formTitle.innerHTML = `Contactez-moi ${photographerInfos.name}`
   })
-    }
-// call functions to display doata in page 
+}
+
+
+
+// call functions to display data in page 
 async function init() {
-  // Récupère les datas des photographes
+
   const { photographers, medias } = await getPhotographerInfos()
   displayPortfolioItems(photographers)
   displayDataUser(medias)
