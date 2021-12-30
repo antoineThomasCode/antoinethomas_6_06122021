@@ -170,6 +170,38 @@ function mediaFactory(data) {
             containerMedia.appendChild(mediaToDisplay)
             
         })    
+        btnPrev.addEventListener('click', function(){
+            
+            let regex = /\.jpg/i;
+            let newMedia;
+            let index = titlesForGallery.indexOf(h2.innerHTML)
+            let src
+            containerMedia.removeChild(mediaToDisplay)
+            if (index === 0) {
+                index = titlesForGallery.length - 1
+            } else {
+                  index--
+            }
+            h2.textContent = titlesForGallery[index]
+            if(regex.test(srcForGallery[index])) {
+                newMedia = document.createElement('img')
+                newMedia.setAttribute('src', srcForGallery[index])
+                newMedia.setAttribute("alt", titlesForGallery[index]);
+
+            } else {
+                newMedia = document.createElement('video')
+                newMedia.setAttribute('src', srcForGallery[index])
+                newMedia.setAttribute("alt", titlesForGallery[index]);
+                newMedia.setAttribute("type", "video/mp4");
+                newMedia.setAttribute("autoplay", "autoplay")
+                newMedia.setAttribute("preload", "auto")
+                newMedia.setAttribute("controls", "")
+                newMedia.setAttribute("loop", "")
+            }
+            mediaToDisplay = newMedia
+            containerMedia.appendChild(mediaToDisplay)
+            
+        })  
         lightbox.append(btnClose ,btnPrev, btnNext)
         
     }
