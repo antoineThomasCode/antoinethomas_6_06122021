@@ -35,16 +35,43 @@ async function displayPortfolioItems(photographers) {
   }
 }
 async function displayDataUser(medias) {
-  
+    const url = new URL(document.location)
     const portfolioMain = document.getElementById("main");
     const section = document.createElement( 'section' );
-    section.id = 'mediaContainer';
-    portfolioMain.appendChild(section)
+    const sorterContainer = document.createElement('div')
+    const p = document.createElement('p')
+    const ul = document.createElement('ul')
+    const byPopularity = document.createElement('li')
+    const byTitle = document.createElement('li')
 
+    section.id = 'mediaContainer';
+    // create sorter for media display --> using URL  params 
+    sorterContainer.id = 'sorter'
+    p.textContent = 'Trier par'
+    byPopularity.innerHTML = `<a href="${url.origin}/pages/photographer.html?id=${photographerId}&sortBy=popularity">Popularité <i class="fas fa-chevron-right"></i></a>`
+    byTitle.innerHTML = `<a href="${url.origin}/pages/photographer.html?id=${photographerId}&sortBy=title">Titre <i class="fas fa-chevron-right"></i></a>`
+
+    //console.log(url)
     
+    portfolioMain.appendChild(section)
+    mediaContainer.appendChild(sorterContainer)
+    sorterContainer.append(p, ul)
+    ul.append(byPopularity, byTitle)
+    if (url.searchParams.get('sortBy') == 'popularity') {
+      medias = medias.sort(function (a, b) {
+        return b.likes - a.likes
+      })
+    }
+    if (url.searchParams.get('sortBy') == 'title') {
+      medias = medias.sort(function SortArray(x, y){
+        if (x.title < y.title) {return -1;}
+        if (x.title > y.title) {return 1;}
+        return 0;
+      })
+    }
+    // display media with media factory 
     medias.forEach((media) => {
         if (media.photographerId == photographerId){
-          const section = document.getElementById('mediaContainer');
           let mediaModel = mediaFactory(media);
           const userDataDOM = mediaModel.getMediaItems();
         }
@@ -70,8 +97,6 @@ async function displayLikes(medias) {
     formTitle.innerHTML = `Contactez-moi ${photographerInfos.name}`
   })
 }
-
-
 
 // call functions to display data in page 
 async function init() {

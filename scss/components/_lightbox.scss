@@ -10,14 +10,19 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    img, video {
-        position: relative;
-        flex-basis: auto;
-        margin-top: 50px;
-        height: 70vh;
-        object-fit: cover;
-        box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
-        justify-content: start;
+   
+    div:first-child {
+        display: flex;
+        justify-content: center;
+        img, video {
+            position: relative;
+            flex-basis: auto;
+            margin-top: 50px;
+            height: 70vh;
+            object-fit: cover;
+            box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+            justify-content: start;
+        }
     }
     div {
         display: flex;

@@ -1,3 +1,4 @@
+
 // ici faire une factory media sur le modèle de la factory photographer
 function mediaFactory(data) {
    
@@ -30,9 +31,6 @@ function mediaFactory(data) {
         video.setAttribute("src", mediaPathVideo);
         video.setAttribute("alt", `${title}`);
         video.setAttribute("type", "video/mp4");
-        //video.setAttribute("autoplay", "autoplay")
-        //video.setAttribute("preload", "auto")
-        //video.setAttribute("controls", "")
         video.setAttribute("loop", "")
         video.setAttribute("muted", "")
         video.addEventListener('click', createLightbox)
@@ -127,9 +125,14 @@ function mediaFactory(data) {
 
         // Display media in lightbox
         const lightbox = document.createElement('div')
+        const containerMedia = document.createElement('div')
+        containerMedia.id = 'container-media'
         lightbox.id = 'lightbox'
         header.append(lightbox)
-        lightbox.appendChild(mediaToDisplay) 
+
+        lightbox.appendChild(containerMedia)
+        containerMedia.appendChild(mediaToDisplay)
+
         lightbox.appendChild(infosMedia)
 
         btnClose.addEventListener('click', function(){
@@ -138,38 +141,36 @@ function mediaFactory(data) {
         btnNext.addEventListener('click', function(){
             
             let regex = /\.jpg/i;
-    
+            let newMedia;
             let index = titlesForGallery.indexOf(h2.innerHTML)
             let src
+            containerMedia.removeChild(mediaToDisplay)
             if (index === (titlesForGallery.length - 1)) {
                 index = 0
             } else {
-                 index++
+                  index++
             }
             h2.textContent = titlesForGallery[index]
             if(regex.test(srcForGallery[index])) {
-                console.log(index)
-                mediaToDisplay = document.getElementById("mediaDisplayed")
-                //let mediaToDisplay = document.createElement("video")
-                mediaToDisplay.outerHTML = `<img src="${srcForGallery[index]}" alt="${titlesForGallery[index]}"></img>`
-            } else {
-                lightbox.removeChild(mediaToDisplay)
-                //let mediaToDisplay = document.createElement("video")
-                lightbox.appendChild(mediaToDisplay)
-                mediaToDisplay.outerHTML = `<video src="${srcForGallery[index]}"
-                 alt="${titlesForGallery[index]}"
-                  type ="video/mp4"
-                   autoplay="" controls=""> </video>`
-               
-            }
+                newMedia = document.createElement('img')
+                newMedia.setAttribute('src', srcForGallery[index])
+                newMedia.setAttribute("alt", titlesForGallery[index]);
 
+            } else {
+                newMedia = document.createElement('video')
+                newMedia.setAttribute('src', srcForGallery[index])
+                newMedia.setAttribute("alt", titlesForGallery[index]);
+                newMedia.setAttribute("type", "video/mp4");
+                newMedia.setAttribute("autoplay", "autoplay")
+                newMedia.setAttribute("preload", "auto")
+                newMedia.setAttribute("controls", "")
+                newMedia.setAttribute("loop", "")
+            }
+            mediaToDisplay = newMedia
+            containerMedia.appendChild(mediaToDisplay)
             
         })    
         lightbox.append(btnClose ,btnPrev, btnNext)
-        
-    }
-    // Gallery Array for the Lighbtox // 
-    function btnNextEvent () {
         
     }
 

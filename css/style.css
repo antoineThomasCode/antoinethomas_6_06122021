@@ -268,7 +268,11 @@ form input {
   align-items: center;
   flex-wrap: wrap;
 }
-#lightbox img, #lightbox video {
+#lightbox div:first-child {
+  display: flex;
+  justify-content: center;
+}
+#lightbox div:first-child img, #lightbox div:first-child video {
   position: relative;
   flex-basis: auto;
   margin-top: 50px;
@@ -452,6 +456,63 @@ body {
   justify-content: center;
   padding: 0 100px;
   column-gap: 50px;
+}
+#mediaContainer #sorter {
+  display: flex;
+  position: relative;
+  flex-basis: 100%;
+}
+#mediaContainer #sorter p {
+  font-weight: 400;
+  margin-right: 10px;
+}
+#mediaContainer #sorter ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 75px;
+  top: -10px;
+  padding: 5px;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 200;
+}
+#mediaContainer #sorter ul li a {
+  display: flex;
+  flex-basis: 100%;
+  font-size: 14px;
+  font-weight: 200;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+#mediaContainer #sorter ul li i {
+  rotate: 270deg;
+  margin-left: 10px;
+}
+#mediaContainer #sorter ul li:last-child a {
+  border-bottom: none;
+}
+#mediaContainer #sorter ul li:nth-child(2) {
+  display: none;
+}
+#mediaContainer #sorter ul:hover li:first-child, #mediaContainer #sorter ul:hover li:nth-child(2) {
+  display: flex;
+}
+#mediaContainer #sorter ul:hover li:first-child i, #mediaContainer #sorter ul:hover li:nth-child(2) i {
+  rotate: 90deg;
+}
+#mediaContainer #sorter ul:hover li:first-child a {
+  border-bottom: 1px solid lightgray;
+}
+#mediaContainer #sorter ul:hover li:nth-child(2) {
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+#mediaContainer #sorter ul:hover li:last-child i {
+  display: none;
 }
 #mediaContainer article {
   animation: slide-top 1s ease-out 2.5s both;
