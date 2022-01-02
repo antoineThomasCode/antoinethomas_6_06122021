@@ -48,8 +48,8 @@ async function displayDataUser(medias) {
   // create sorter for media display --> using URL  params
   sorterContainer.id = 'sorter'
   p.textContent = 'Trier par'
-  byPopularity.innerHTML = `<a href="${url.origin}/${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité <i class="fas fa-chevron-right"></i></a>`
-  byTitle.innerHTML = `<a href="${url.origin}/${url.pathname}?id=${photographerId}&sortBy=title">Titre <i class="fas fa-chevron-right"></i></a>`
+  byPopularity.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité <i class="fas fa-chevron-right"></i></a>`
+  byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre <i class="fas fa-chevron-right"></i></a>`
 
   console.log(url)
 
