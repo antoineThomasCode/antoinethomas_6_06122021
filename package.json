@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "sass --watch scss/main.scss:css/style.css",
     "start": "sass scss/main.scss:css/style.css",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
