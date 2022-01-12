@@ -200,3 +200,5 @@ function mediaFactory(data) {
   }
   return { getMediaItems, createLightbox }
 }
+
+export default mediaFactory

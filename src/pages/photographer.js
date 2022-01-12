@@ -1,3 +1,5 @@
+import mediaFactory from '../factories/medias'
+
 // catch id in URL
 let params = new URL(document.location).searchParams
 const photographerId = params.get('id')
@@ -10,10 +12,10 @@ const titlesForGallery = []
 async function getPhotographerInfos() {
   try {
     const response = await fetch('../data/photographers.json')
-
+    console.log(response.json())
     return await response.json()
   } catch {
-    console.log('erreur de la requête')
+    console.log('erreur')
   }
 }
 // display items in page or console log an error
@@ -100,11 +102,15 @@ async function displayLikes(medias) {
 }
 
 // call functions to display data in page
-async function init() {
+async function initPortfolio() {
   const { photographers, medias } = await getPhotographerInfos()
   displayPortfolioItems(photographers)
   displayDataUser(medias)
   displayLikes(medias)
+  console.log('ok')
 }
 
-init()
+
+
+export  {initPortfolio, displayPortfolioItems, getPhotographerInfos}
+

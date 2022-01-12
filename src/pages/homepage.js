@@ -1,6 +1,8 @@
+import photographerFactory from '../factories/photographer'
+
 async function getPhotographers() {
     try {
-        const response = await fetch('./data/photographers.json');
+        const response = await fetch('../data/photographers.json');
         return await response.json();
         
     } catch {
@@ -19,10 +21,12 @@ async function displayData(photographers) {
     });
 };
 
-async function init() {
+async function initHomePage() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
 };
 
-init();
+
+
+export default initHomePage

@@ -89,3 +89,5 @@ function photographerFactory(data) {
    
     return { name, picture, tagline, location,  getUserCardDOM, getPortoflioItems }
 }
+
+export default photographerFactory
