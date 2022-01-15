@@ -1,6 +1,8 @@
+import { nameIsCorrect, emailIsCorrect, displayErrorMessage } from "./functions";
 // open & close FormModal 
 const modal = document.getElementById("contact_modal");
 function displayModal() {
+    
 	modal.style.display = "flex";
 }
 
@@ -67,3 +69,4 @@ function validate(){
         return false;    
     }
 }
+export {displayModal, closeModal, validate, modal}

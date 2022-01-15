@@ -1,4 +1,5 @@
 import { photographerInfos} from '../pages/photographer'
+import {displayModal, closeModal, validate} from '../utils/contactForm'
 
 function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
@@ -92,4 +93,4 @@ function photographerFactory(data) {
     return { name, picture, tagline, location,  getUserCardDOM, getPortoflioItems }
 }
 
-export default photographerFactory
+export  default photographerFactory

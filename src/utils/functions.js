@@ -27,3 +27,5 @@ const displayErrorMessage = (input, errorMessage) => {
     input.insertAdjacentElement('afterend', createErrorMessage(`${errorMessage}`));
 }
 
+
+export {nameIsCorrect, emailIsCorrect, createErrorMessage, displayErrorMessage}

@@ -1,5 +1,6 @@
 import mediaFactory from '../factories/medias'
 import photographerFactory from '../factories/photographer'
+import {displayModal, closeModal, validate, modal} from '../utils/contactForm'
 
 
 // catch id in URL
@@ -7,7 +8,8 @@ let params = new URL(document.location).searchParams
 let photographerInfos
 const photographerId = params.get('id')
 let userLikesCounter = 0
-
+const titlesForGallery = []
+const srcForGallery = []
 
 
 
@@ -103,6 +105,9 @@ async function displayLikes(medias) {
     formTitle.innerHTML = `Contactez-moi ${photographerInfos.name}`
   })
 }
+// contact form in portfolio --> photographers 
+
+
 
 // call functions to display data in page
 async function initPortfolio() {
@@ -112,10 +117,9 @@ async function initPortfolio() {
   displayPortfolioItems(photographers)
   displayDataUser(medias)
   displayLikes(medias)
-  console.log('ok')
 }
 
 
 
-export  {initPortfolio, displayPortfolioItems, getPhotographerInfos, photographerInfos}
+export  {initPortfolio, displayPortfolioItems, getPhotographerInfos, photographerInfos, titlesForGallery, srcForGallery}
 
