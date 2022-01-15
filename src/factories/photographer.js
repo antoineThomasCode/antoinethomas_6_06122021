@@ -1,3 +1,5 @@
+import { photographerInfos} from '../pages/photographer'
+
 function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 

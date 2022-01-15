@@ -1,4 +1,7 @@
+import {photographerInfos} from '../pages/photographer'
+
 // ici faire une factory media sur le modèle de la factory photographer
+
 function mediaFactory(data) {
   const { photographerId, id, image, video, title, date, price, likes } = data
 
@@ -7,6 +10,8 @@ function mediaFactory(data) {
   let path = ''
   let mediaInfosLightbox = document.createElement('div')
   const article = document.createElement('article')
+  const titlesForGallery = []
+  const srcForGallery = []
 
   // *** tools to display medias in photographers' portfolio *** //
   function createImage() {

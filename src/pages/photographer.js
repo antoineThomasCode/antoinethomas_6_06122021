@@ -1,19 +1,22 @@
 import mediaFactory from '../factories/medias'
+import photographerFactory from '../factories/photographer'
+
 
 // catch id in URL
 let params = new URL(document.location).searchParams
+let photographerInfos
 const photographerId = params.get('id')
 let userLikesCounter = 0
 
-const srcForGallery = []
-const titlesForGallery = []
+
+
 
 // connect to json file
 async function getPhotographerInfos() {
   try {
-    const response = await fetch('../data/photographers.json')
-    console.log(response.json())
-    return await response.json()
+    const res = await fetch('../data/photographers.json')
+
+    return res.json()
   } catch {
     console.log('erreur')
   }
@@ -24,7 +27,7 @@ async function displayPortfolioItems(photographers) {
 
   if (photographerId) {
     //display items in header
-    photographerInfos = photographers.find(
+     photographerInfos = photographers.find(
       (photographer) => photographer.id == photographerId,
     )
     const photographerModel = photographerFactory(photographerInfos)
@@ -104,6 +107,8 @@ async function displayLikes(medias) {
 // call functions to display data in page
 async function initPortfolio() {
   const { photographers, medias } = await getPhotographerInfos()
+ //const res = await getPhotographerInfos()
+//  console.log(res)
   displayPortfolioItems(photographers)
   displayDataUser(medias)
   displayLikes(medias)
@@ -112,5 +117,5 @@ async function initPortfolio() {
 
 
 
-export  {initPortfolio, displayPortfolioItems, getPhotographerInfos}
+export  {initPortfolio, displayPortfolioItems, getPhotographerInfos, photographerInfos}
 
