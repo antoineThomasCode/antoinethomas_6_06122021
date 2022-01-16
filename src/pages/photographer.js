@@ -30,7 +30,7 @@ async function displayPortfolioItems(photographers) {
   if (photographerId) {
     //display items in header
      photographerInfos = photographers.find(
-      (photographer) => photographer.id == photographerId,
+      (photographer) => photographer.id === parseInt(photographerId),
     )
     const photographerModel = photographerFactory(photographerInfos)
     const userInfosElements = photographerModel.getPortoflioItems()
@@ -58,18 +58,17 @@ async function displayDataUser(medias) {
   byPopularity.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité <i class="fas fa-chevron-right"></i></a>`
   byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre <i class="fas fa-chevron-right"></i></a>`
 
-  console.log(url)
 
   portfolioMain.appendChild(section)
   mediaContainer.appendChild(sorterContainer)
   sorterContainer.append(p, ul)
   ul.append(byPopularity, byTitle)
-  if (url.searchParams.get('sortBy') == 'popularity') {
+  if (url.searchParams.get('sortBy') === 'popularity') {
     medias = medias.sort(function (a, b) {
       return b.likes - a.likes
     })
   }
-  if (url.searchParams.get('sortBy') == 'title') {
+  if (url.searchParams.get('sortBy') === 'title') {
     medias = medias.sort(function SortArray(x, y) {
       if (x.title < y.title) {
         return -1
@@ -109,11 +108,21 @@ async function displayLikes(medias) {
 
 
 
+
 // call functions to display data in page
 async function initPortfolio() {
   const { photographers, medias } = await getPhotographerInfos()
- //const res = await getPhotographerInfos()
-//  console.log(res)
+  const openContactFormBtn = document.getElementById('open_contact_form')
+  const closeContactFormBtn = document.getElementById('close_contact_form')
+  const submitForm = document.getElementById('contact_form')
+ 
+ openContactFormBtn.addEventListener('click', displayModal)
+ closeContactFormBtn.addEventListener('click', closeModal)
+ submitForm.addEventListener('click', function(e){
+   e.preventDefault()
+   const submitFormBtn = document.getElementById('submit_contact_form')
+   submitFormBtn.addEventListener('click', validate)
+ })
   displayPortfolioItems(photographers)
   displayDataUser(medias)
   displayLikes(medias)

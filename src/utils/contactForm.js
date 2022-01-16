@@ -11,7 +11,7 @@ function closeModal() {
 }
 // validate form before sending data to the backend
 function validate(){
-
+    
     // field values recovery
     const formContent = document.getElementById('modal-content')
     let isErrors = false;
@@ -25,26 +25,20 @@ function validate(){
 
     // find functions using to validate values in ---> functions.js 
     if(!nameIsCorrect(firstName.value)){
-        console.log('ok1')
         isErrors = true
         displayErrorMessage(firstName, 'Veuillez entrer 2 caractères ou plus pour le prénom.')
     }
     if(!nameIsCorrect(lastName.value)){
-        console.log('ok2')
         isErrors = true
         displayErrorMessage(lastName, 'Veuillez entrer 2 caractères ou plus pour le nom.')
     }
     if(!emailIsCorrect(email.value)){
         isErrors = true
-        console.log('ok3')
         displayErrorMessage(email, 'Veuillez entrer une adresse mail valide.')
     }
     // check if an error was detected 
     if(isErrors){
-    
-    console.log('erreur dans le formulaire')
     return false; 
-
     } else {
         const messageForPhotographer = {
             firstname: firstName.value,

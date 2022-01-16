@@ -354,7 +354,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  animation: slide-top 0.9s ease-out 2s both;
+  animation: slide-top 0.8s ease-out 0.2s both;
 }
 .photographer_section article a img {
   height: 200px;
@@ -515,7 +515,7 @@ body {
   display: none;
 }
 #mediaContainer article {
-  animation: slide-top 1s ease-out 2.5s both;
+  animation: slide-top 0.4s ease-out 0.7s both;
   flex-basis: 30%;
 }
 #mediaContainer article img, #mediaContainer article video {
