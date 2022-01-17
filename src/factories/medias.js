@@ -8,7 +8,7 @@ function mediaFactory(data) {
   let path = ''
   let mediaInfosLightbox = document.createElement('div')
   const article = document.createElement('article')
-
+  const globalLikes = 0;
   const h2 = document.createElement('h2')
   const containerMedia = document.createElement('div')
   let mediaToDisplay
@@ -212,10 +212,20 @@ function mediaFactory(data) {
       containerMedia.removeChild(mediaToDisplay)
       header.removeChild(lightbox)
     })
-    //btnNext.addEventListener('click', buttonNextLightbox)
+    document.addEventListener("keydown", event => {
+      if (event.isComposing || event.keyCode === 39) {
+        buttonNextLightbox()
+      }
+      if (event.isComposing || event.keyCode === 37) {
+        buttonPrevLigthbox()
+      }
+      if (event.isComposing || event.keyCode === 27) {
+        containerMedia.removeChild(mediaToDisplay)
+        header.removeChild(lightbox)
+      }
+      
+    });
     btnNext.addEventListener('click', buttonNextLightbox)
-
-
     btnPrev.addEventListener('click', buttonPrevLigthbox)
     lightbox.append(btnClose, btnPrev, btnNext)
   }
