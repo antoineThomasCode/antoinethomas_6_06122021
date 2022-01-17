@@ -2,7 +2,7 @@ import photographerFactory from '../factories/photographer'
 
 async function getPhotographers() {
     try {
-        const response = await fetch('/data/photographers.json');
+        const response = await fetch('https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json');
         return await response.json();
         
     } catch {
