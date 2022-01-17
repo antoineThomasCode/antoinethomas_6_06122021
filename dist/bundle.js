@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_pages_homepage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/pages/homepage */ \"./src/pages/homepage.js\");\n/* harmony import */ var _src_pages_photographer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/pages/photographer */ \"./src/pages/photographer.js\");\n\r\n\r\n\r\nconst url = new URL(document.location).pathname\r\n\r\n\r\n\r\nif (url === '/pages/photographer.html') {\r\n    (0,_src_pages_photographer__WEBPACK_IMPORTED_MODULE_1__.initPortfolio)()\r\n} else {\r\n    (0,_src_pages_homepage__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n}\r\n  \r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://antoinethomas_6_06122021/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_pages_homepage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/pages/homepage */ \"./src/pages/homepage.js\");\n/* harmony import */ var _src_pages_photographer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/pages/photographer */ \"./src/pages/photographer.js\");\n\r\n\r\n\r\nconst url = new URL(document.location).pathname\r\n\r\n\r\n\r\nif (url === '/antoinethomas_6_06122021/pages/photographer.html') {\r\n    (0,_src_pages_photographer__WEBPACK_IMPORTED_MODULE_1__.initPortfolio)()\r\n} else {\r\n    (0,_src_pages_homepage__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n}\r\n  \r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://antoinethomas_6_06122021/./src/index.js?");
 
 /***/ }),
 

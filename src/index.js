@@ -5,7 +5,7 @@ const url = new URL(document.location).pathname
 
 
 
-if (url === '/pages/photographer.html') {
+if (url === '/antoinethomas_6_06122021/pages/photographer.html') {
     initPortfolio()
 } else {
     initHomePage()
