@@ -93,6 +93,7 @@ function mediaFactory(data) {
     // insert items in articles
     article.appendChild(img)
     img.addEventListener('click', createLightbox)
+    img.tabIndex = 0
     srcForGallery.push(mediaPathImg)
   }
   function createVideo() {
@@ -104,6 +105,7 @@ function mediaFactory(data) {
     video.setAttribute('loop', '')
     video.setAttribute('muted', '')
     video.addEventListener('click', createLightbox)
+    video.tabIndex = 0
 
     path = mediaPathVideo
     srcForGallery.push(mediaPathVideo)
