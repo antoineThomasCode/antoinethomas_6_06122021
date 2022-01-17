@@ -16,7 +16,7 @@ const srcForGallery = []
 // connect to json file
 async function getPhotographerInfos() {
   try {
-    const res = await fetch('../data/photographers.json')
+    const res = await fetch('https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json')
 
     return res.json()
   } catch {
