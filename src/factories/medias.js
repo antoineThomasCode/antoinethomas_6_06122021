@@ -223,6 +223,7 @@ function mediaFactory(data) {
         containerMedia.removeChild(mediaToDisplay)
         header.removeChild(lightbox)
       }
+      // faire un if avec checker if it's a media or not 
       
     });
     btnNext.addEventListener('click', buttonNextLightbox)
