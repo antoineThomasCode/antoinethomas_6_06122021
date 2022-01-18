@@ -150,7 +150,12 @@ function mediaFactory(data) {
       }
     })
     //insert items in section container
-
+    article.addEventListener('keydown', event => {
+      if (event.isComposing || event.keyCode === 13) {
+        createLightbox()
+      }
+      })
+  
     article.append(infosItemsContainer)
     infosItemsContainer.append(h3, likesPerItem)
     section.appendChild(article)
@@ -220,7 +225,9 @@ function mediaFactory(data) {
         buttonPrevLigthbox()
       }
       if (event.isComposing || event.keyCode === 27) {
-        containerMedia.removeChild(mediaToDisplay)
+        if (mediaToDisplay) {
+          containerMedia.removeChild(mediaToDisplay)
+        }
         header.removeChild(lightbox)
       }
       // faire un if avec checker if it's a media or not 

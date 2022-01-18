@@ -50,13 +50,18 @@ async function displayDataUser(medias) {
   const ul = document.createElement('ul')
   const byPopularity = document.createElement('li')
   const byTitle = document.createElement('li')
-
+  
+  byPopularity.id = 'byPopularity'
+  byPopularity.tabIndex = 0
+  byTitle.id = 'byTitle'
+  byTitle.tabIndex = 0
   section.id = 'mediaContainer'
+  ul.tabIndex = 0           
   // create sorter for media display --> using URL  params
   sorterContainer.id = 'sorter'
   p.textContent = 'Trier par'
-  byPopularity.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité <i class="fas fa-chevron-right"></i></a>`
-  byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre <i class="fas fa-chevron-right"></i></a>`
+  byPopularity.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité</a>`
+  byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre</a>`
 
 
   portfolioMain.appendChild(section)
@@ -67,6 +72,8 @@ async function displayDataUser(medias) {
     medias = medias.sort(function (a, b) {
       return b.likes - a.likes
     })
+    byPopularity.style.display = 'none'
+    byTitle.style.display = 'flex'
   }
   if (url.searchParams.get('sortBy') === 'title') {
     medias = medias.sort(function SortArray(x, y) {
@@ -78,6 +85,8 @@ async function displayDataUser(medias) {
       }
       return 0
     })
+    byTitle.style.display = 'none'
+    byPopularity.style.display = 'flex'
   }
   // display media with media factory
   medias.forEach((media) => {
@@ -116,9 +125,16 @@ async function initPortfolio() {
   const closeContactFormBtn = document.getElementById('close_contact_form')
   const submitForm = document.getElementById('contact_form')
  
- openContactFormBtn.addEventListener('click', displayModal)
- closeContactFormBtn.addEventListener('click', closeModal)
- submitForm.addEventListener('click', function(e){
+  openContactFormBtn.addEventListener('click', displayModal)
+  closeContactFormBtn.addEventListener('click', closeModal)
+  document.addEventListener("keydown", event => {
+    if (event.isComposing || event.keyCode === 27) {
+     closeModal()
+    }
+    // faire un if avec checker if it's a media or not 
+    
+  });
+  submitForm.addEventListener('click', function(e){
    e.preventDefault()
    const submitFormBtn = document.getElementById('submit_contact_form')
    submitFormBtn.addEventListener('click', validate)
