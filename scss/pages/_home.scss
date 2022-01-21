@@ -4,10 +4,14 @@ body {
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display: flex;
+    flex-wrap: wrap;
     margin: 100px 0;
+    row-gap: 50px;
+    column-gap: 50px;
+    article {
+        flex-basis: 30%;
+    }
     article  a {
         text-decoration: none;
         color: black;
@@ -52,5 +56,15 @@ body {
           
         }
     
+    }
+}
+@media screen and (max-width: 1000px) {
+    .photographer_section article {
+        flex-basis: 45%; 
+    }
+}
+@media screen and (max-width: 500px) {
+    .photographer_section article {
+        flex-basis: 100%; 
     }
 }

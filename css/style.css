@@ -64,7 +64,6 @@ table {
 h1 {
   font-size: 2.5em;
   color: #901C1C;
-  margin-right: 100px;
 }
 
 .contact_button {
@@ -324,15 +323,18 @@ form input {
 }
 
 header {
-  padding-top: 20px;
-  flex-direction: row;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  max-width: 1400px;
+  padding: 50px 30px;
+  margin: 0 auto;
 }
 header .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 body {
@@ -341,10 +343,14 @@ body {
 }
 
 .photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  display: flex;
+  flex-wrap: wrap;
   margin: 100px 0;
+  row-gap: 50px;
+  column-gap: 50px;
+}
+.photographer_section article {
+  flex-basis: 30%;
 }
 .photographer_section article a {
   text-decoration: none;
@@ -386,6 +392,16 @@ body {
   line-height: 13px;
 }
 
+@media screen and (max-width: 1000px) {
+  .photographer_section article {
+    flex-basis: 45%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .photographer_section article {
+    flex-basis: 100%;
+  }
+}
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -395,10 +411,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-}
-
-header {
-  display: flex;
 }
 
 .photograph-header {
