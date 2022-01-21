@@ -329,7 +329,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  max-width: 1400px;
+  max-width: 1900px;
   padding: 50px 30px;
   margin: 0 auto;
 }
@@ -345,12 +345,13 @@ body {
 .photographer_section {
   display: flex;
   flex-wrap: wrap;
-  margin: 100px 0;
+  margin: 100px auto;
   row-gap: 50px;
-  column-gap: 50px;
+  justify-content: space-between;
+  width: 100%;
 }
 .photographer_section article {
-  flex-basis: 30%;
+  flex-basis: 31%;
 }
 .photographer_section article a {
   text-decoration: none;
