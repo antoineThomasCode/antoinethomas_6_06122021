@@ -329,12 +329,12 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  max-width: 1900px;
   padding: 50px 30px;
   margin: 30px auto;
 }
 header .logo {
   height: 50px;
+  margin-left: 80px;
 }
 
 body {
