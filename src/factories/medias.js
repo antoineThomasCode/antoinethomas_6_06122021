@@ -12,10 +12,14 @@ function mediaFactory(data) {
   const h2 = document.createElement('h2')
   const containerMedia = document.createElement('div')
   let mediaToDisplay
+  const contactFormIsOpen = false 
+  let lightboxIsOpen = false 
+  
 
   // *** tools to display medias in photographers' portfolio *** //
    // button Next Event
    function buttonNextLightbox() {
+     console.log('droite')
     let regex = /\.jpg/i
     let newMedia
     let index = titlesForGallery.indexOf(h2.innerHTML)
@@ -50,6 +54,7 @@ function mediaFactory(data) {
    // button Prev Event
 
    function buttonPrevLigthbox () {
+     console.log('gauche')
     let regex = /\.jpg/i
     let newMedia
     let index = titlesForGallery.indexOf(h2.innerHTML)
@@ -150,11 +155,7 @@ function mediaFactory(data) {
       }
     })
     //insert items in section container
-    article.addEventListener('keydown', event => {
-      if (event.isComposing || event.keyCode === 13) {
-        createLightbox()
-      }
-      })
+    
   
     article.append(infosItemsContainer)
     infosItemsContainer.append(h3, likesPerItem)
@@ -164,6 +165,8 @@ function mediaFactory(data) {
 
   // Lightbox creation //
   function createLightbox() {
+    lightboxIsOpen = true
+    
     const header = document.getElementById('main')
  
     let infosMedia = document.createElement('div')
@@ -202,41 +205,72 @@ function mediaFactory(data) {
     mediaToDisplay.setAttribute('src', path)
 
     // Display media in lightbox
+    
+  
     const lightbox = document.createElement('div')
+    
     
     containerMedia.id = 'container-media'
     lightbox.id = 'lightbox'
     header.append(lightbox)
-
-    lightbox.appendChild(containerMedia)
     containerMedia.appendChild(mediaToDisplay)
+    lightbox.appendChild(containerMedia)
+   
 
     lightbox.appendChild(infosMedia)
 
     btnClose.addEventListener('click', function () {
-      containerMedia.removeChild(mediaToDisplay)
-      header.removeChild(lightbox)
+      lightboxIsOpen = false
+     containerMedia.removeChild(mediaToDisplay)
+     header.removeChild(lightbox)
     })
-    document.addEventListener("keydown", event => {
-      if (event.isComposing || event.keyCode === 39) {
-        buttonNextLightbox()
-      }
-      if (event.isComposing || event.keyCode === 37) {
-        buttonPrevLigthbox()
-      }
-      if (event.isComposing || event.keyCode === 27) {
-        if (mediaToDisplay) {
-          containerMedia.removeChild(mediaToDisplay)
-        }
-        header.removeChild(lightbox)
-      }
-      // faire un if avec checker if it's a media or not 
-      
-    });
+   
     btnNext.addEventListener('click', buttonNextLightbox)
     btnPrev.addEventListener('click', buttonPrevLigthbox)
     lightbox.append(btnClose, btnPrev, btnNext)
+    function buttonEscEvent(){
+      if (lightboxIsOpen){
+        containerMedia.removeChild(mediaToDisplay)
+        lightbox.removeChild(containerMedia)
+        header.removeChild(lightbox)
+        console.log(header)
+        console.log(containerMedia)
+        console.log(lightbox)
+        lightboxIsOpen = false 
+      }
+      
+    }
+  
+    //keyboard listener switch + verifications
+    window.addEventListener("keydown", function (event) {
+      if (lightboxIsOpen) {
+        switch (event.key) {
+          case "ArrowLeft":
+            buttonPrevLigthbox()
+            break;
+          case "ArrowRight": 
+            buttonNextLightbox()
+            break;
+          case "Enter":
+            // Faire quelque chose pour les touches "enter" ou "return" pressées.
+            break;
+          case "Escape":
+            buttonEscEvent() 
+            break;
+          default:
+            return; // Quitter lorsque cela ne gère pas l'événement touche.
+        }
+      
+      }
+      // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
+      
+    }, true);
   }
+  // keyboard navigation for lightbox 
+
+  // functions with ckeckers adapted for keyboard navigation 
+  
+
   return { getMediaItems, createLightbox}
 }
 

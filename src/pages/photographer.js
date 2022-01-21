@@ -127,13 +127,7 @@ async function initPortfolio() {
  
   openContactFormBtn.addEventListener('click', displayModal)
   closeContactFormBtn.addEventListener('click', closeModal)
-  document.addEventListener("keydown", event => {
-    if (event.isComposing || event.keyCode === 27) {
-     closeModal()
-    }
-    // faire un if avec checker if it's a media or not 
-    
-  });
+  
   submitForm.addEventListener('click', function(e){
    e.preventDefault()
    const submitFormBtn = document.getElementById('submit_contact_form')

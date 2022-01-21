@@ -8,7 +8,8 @@
     "serve": "sass --watch scss/main.scss:css/style.css",
     "start": "sass scss/main.scss:css/style.css",
     "lint": "eslint .",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack --watch"
   },
   "repository": {
     "type": "git",
