@@ -1,18 +1,16 @@
 import {photographerInfos, titlesForGallery, srcForGallery} from '../pages/photographer'
 
 function mediaFactory(data) {
-  const { photographerId, id, image, video, title, date, price, likes } = data
+  const {  image, video, title, likes } = data
 
   const mediaPathImg = `../assets/images/${photographerInfos.name}/${image}`
   const mediaPathVideo = `../assets/images/${photographerInfos.name}/${video}`
   let path = ''
-  let mediaInfosLightbox = document.createElement('div')
+  
   const article = document.createElement('article')
-  const globalLikes = 0;
   const h2 = document.createElement('h2')
   const containerMedia = document.createElement('div')
   let mediaToDisplay
-  const contactFormIsOpen = false 
   let lightboxIsOpen = false 
   
 
@@ -23,7 +21,6 @@ function mediaFactory(data) {
     let regex = /\.jpg/i
     let newMedia
     let index = titlesForGallery.indexOf(h2.innerHTML)
-    let src
     
     if (index === titlesForGallery.length - 1) {
       index = 0
@@ -58,7 +55,6 @@ function mediaFactory(data) {
     let regex = /\.jpg/i
     let newMedia
     let index = titlesForGallery.indexOf(h2.innerHTML)
-    let src
     
     if (index === 0) {
       index = titlesForGallery.length - 1
@@ -147,7 +143,7 @@ function mediaFactory(data) {
     } else {
       createVideo()
     }
-    infosItemsContainer.addEventListener('click', function (e) {
+    infosItemsContainer.addEventListener('click', function() {
       if (!isLiked) {
         isLiked = true
         likesPerItem.textContent = likes + 1

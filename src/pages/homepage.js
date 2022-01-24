@@ -5,7 +5,8 @@ async function getPhotographers() {
         const response = await fetch('https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json');
         return await response.json();
         
-    } catch {
+    } 
+    catch {
        console.log('erreur de la requête')
     }
 }

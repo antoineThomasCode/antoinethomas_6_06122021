@@ -1,5 +1,5 @@
 import { photographerInfos} from '../pages/photographer'
-import {displayModal, closeModal, validate} from '../utils/contactForm'
+
 
 function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline, price } = data;

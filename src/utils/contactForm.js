@@ -44,7 +44,6 @@ function validate(){
             firstname: firstName.value,
             lastname: lastName.value,
             email: email.value,
-            message: message.value
         };
 
         console.log(messageForPhotographer)
