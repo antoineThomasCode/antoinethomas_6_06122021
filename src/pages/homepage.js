@@ -2,7 +2,7 @@ import photographerFactory from '../factories/photographer'
 import { genericFetch} from '../utils/helpers';
 
 
-const getPhotographers = async () => await genericFetch("../data/photographers.json", "Erreur dans la récupération des photographes");
+const getPhotographers = async () => await genericFetch("https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json", "Erreur dans la récupération des photographes");
 
 function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
