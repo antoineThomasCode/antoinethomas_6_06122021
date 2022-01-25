@@ -1,7 +1,7 @@
 import mediaFactory from '../factories/medias'
 import photographerFactory from '../factories/photographer'
-import {displayModal, closeModal, validate, modal} from '../utils/contactForm'
-
+import {displayModal, closeModal, validate} from '../utils/contactForm'
+import { genericFetch } from '../utils/helpers';
 
 // catch id in URL
 let params = new URL(document.location).searchParams
@@ -11,22 +11,12 @@ let userLikesCounter = 0
 const titlesForGallery = []
 const srcForGallery = []
 
-
-
 // connect to json file
-async function getPhotographerInfos() {
-  try {
-    const res = await fetch('https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json')
+const getPhotographerInfos = async () => await genericFetch("../data/photographers.json", "Erreur dans la récupération des photographes");
 
-    return res.json()
-  } catch {
-    console.log('erreur')
-  }
-}
 // display items in page or console log an error
 async function displayPortfolioItems(photographers) {
   //catch photographer array
-
   if (photographerId) {
     //display items in header
      photographerInfos = photographers.find(
@@ -57,15 +47,14 @@ async function displayDataUser(medias) {
   byTitle.tabIndex = 0
   section.id = 'mediaContainer'
   ul.tabIndex = 0           
+
   // create sorter for media display --> using URL  params
   sorterContainer.id = 'sorter'
   p.textContent = 'Trier par'
   byPopularity.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=popularity">Popularité</a>`
   byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre</a>`
-
-
+  // add in DOM
   portfolioMain.appendChild(section)
-  mediaContainer.appendChild(sorterContainer)
   sorterContainer.append(p, ul)
   ul.append(byPopularity, byTitle)
   if (url.searchParams.get('sortBy') === 'popularity') {
@@ -115,9 +104,6 @@ async function displayLikes(medias) {
 }
 // contact form in portfolio --> photographers 
 
-
-
-
 // call functions to display data in page
 async function initPortfolio() {
   const { photographers, medias } = await getPhotographerInfos()
@@ -126,6 +112,15 @@ async function initPortfolio() {
   const submitForm = document.getElementById('contact_form')
  
   openContactFormBtn.addEventListener('click', displayModal)
+  openContactFormBtn.ariaLabel = 'ouvrir'
+  closeContactFormBtn.tabIndex = 0
+  closeContactFormBtn.ariaLabel = "Fermer"
+  closeContactFormBtn.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13){
+      closeModal()
+  }
+  });
+  
   closeContactFormBtn.addEventListener('click', closeModal)
   
   submitForm.addEventListener('click', function(e){
@@ -137,8 +132,6 @@ async function initPortfolio() {
   displayDataUser(medias)
   displayLikes(medias)
 }
-
-
 
 export  {initPortfolio, displayPortfolioItems, getPhotographerInfos, photographerInfos, titlesForGallery, srcForGallery}
 

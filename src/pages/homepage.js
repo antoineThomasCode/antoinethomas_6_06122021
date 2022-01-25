@@ -1,15 +1,8 @@
 import photographerFactory from '../factories/photographer'
+import { genericFetch} from '../utils/helpers';
 
-async function getPhotographers() {
-    try {
-        const response = await fetch('https://antoinethomascode.github.io/antoinethomas_6_06122021/data/photographers.json');
-        return await response.json();
-        
-    } 
-    catch {
-       console.log('erreur de la requête')
-    }
-}
+
+const getPhotographers = async () => await genericFetch("../data/photographers.json", "Erreur dans la récupération des photographes");
 
 function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
@@ -27,7 +20,5 @@ async function initHomePage() {
     const { photographers } = await getPhotographers();
     displayData(photographers);
 };
-
-
 
 export default initHomePage

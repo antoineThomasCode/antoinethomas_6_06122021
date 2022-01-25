@@ -6,7 +6,7 @@ function mediaFactory(data) {
   const mediaPathImg = `../assets/images/${photographerInfos.name}/${image}`
   const mediaPathVideo = `../assets/images/${photographerInfos.name}/${video}`
   let path = ''
-  
+  let index
   const article = document.createElement('article')
   const h2 = document.createElement('h2')
   const containerMedia = document.createElement('div')
@@ -17,12 +17,11 @@ function mediaFactory(data) {
   // *** tools to display medias in photographers' portfolio *** //
    // button Next Event
    function buttonNextLightbox() {
-     console.log('droite')
     let regex = /\.jpg/i
     let newMedia
-    let index = titlesForGallery.indexOf(h2.innerHTML)
+    index = titlesForGallery.indexOf(h2.innerHTML)
     
-    if (index === titlesForGallery.length - 1) {
+    if (index === (titlesForGallery.length - 1)) {
       index = 0
     } else {
       index++
@@ -51,7 +50,6 @@ function mediaFactory(data) {
    // button Prev Event
 
    function buttonPrevLigthbox () {
-     console.log('gauche')
     let regex = /\.jpg/i
     let newMedia
     let index = titlesForGallery.indexOf(h2.innerHTML)
@@ -147,13 +145,19 @@ function mediaFactory(data) {
       if (!isLiked) {
         isLiked = true
         likesPerItem.textContent = likes + 1
+        
         likesPerItem.appendChild(likeIcon)
       }
     })
     //insert items in section container
     
-  
+    article.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13){
+        createLightbox()
+    }
+    });
     article.append(infosItemsContainer)
+
     infosItemsContainer.append(h3, likesPerItem)
     section.appendChild(article)
   }
@@ -171,16 +175,19 @@ function mediaFactory(data) {
     h2.textContent = title
     infosMedia.appendChild(h2)
     const btnClose = document.createElement('button')
+    btnClose.ariaLabel = 'fermer'
     btnClose.innerHTML = '<i class="fas fa-times"></i>'
 
     // create Next Button in the lightbox
     const btnNext = document.createElement('i')
+    btnNext.ariaLabel = "suivant"
     btnNext.id = 'btn-next'
     btnNext.classList.add('fas', 'fa-chevron-right')
    
     // create button Prev in the Lightbox
 
     const btnPrev = document.createElement('i')
+    btnPrev.ariaLabel = 'précédent'
     btnPrev.classList.add('fas', 'fa-chevron-left')
     btnPrev.id = 'btn-prev'
 
@@ -226,12 +233,11 @@ function mediaFactory(data) {
     lightbox.append(btnClose, btnPrev, btnNext)
     function buttonEscEvent(){
       if (lightboxIsOpen){
-        containerMedia.removeChild(mediaToDisplay)
-        lightbox.removeChild(containerMedia)
-        header.removeChild(lightbox)
-        console.log(header)
-        console.log(containerMedia)
-        console.log(lightbox)
+        index = 0
+        containerMedia?.removeChild(mediaToDisplay)
+        lightbox?.removeChild(containerMedia)
+        header?.removeChild(lightbox)
+        
         lightboxIsOpen = false 
       }
       
