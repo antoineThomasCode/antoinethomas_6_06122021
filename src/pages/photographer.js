@@ -55,6 +55,7 @@ async function displayDataUser(medias) {
   byTitle.innerHTML = `<a href="${url.origin}${url.pathname}?id=${photographerId}&sortBy=title">Titre</a>`
   // add in DOM
   portfolioMain.appendChild(section)
+  section.appendChild(sorterContainer)
   sorterContainer.append(p, ul)
   ul.append(byPopularity, byTitle)
   if (url.searchParams.get('sortBy') === 'popularity') {
